@@ -12,7 +12,7 @@ class Settings:
         self.framerate = 60
         
     # Target Settings
-        self.target_color =(0,0,0)
+        self.target_color =(0,150,0)
         
     # Shooter settings
         self.shooter_color = (25,25,25)
