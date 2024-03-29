@@ -19,8 +19,8 @@ class Settings:
         
     # Bullet settings
         self.bullet_color = (0, 0, 0)
-        self.bullet_height = 15
-        self.bullet_width = 800
+        self.bullet_height = 60
+        self.bullet_width = 3
         self.bullets_missed_limit = 6
         
     # How quick the game speeds up
@@ -37,6 +37,9 @@ class Settings:
         self.target_direction = 1
         
     def increase_speed(self):
-        pass
-
-        
+        self.shooter_speed  *= self.speed_up_scale
+        self.target_speed *= self.speed_up_scale
+        self.bullet_speed  *= self.speed_up_scale
+        print(f"New Shooter Speed {self.shooter_speed}")
+        print(f"New Target Speed {self.target_speed}")
+        print(f"New Bullet Speed {self.bullet_speed}")

@@ -78,7 +78,7 @@ class TargetPractice(pygame.sprite.Sprite):
             
     def _check_keyup_events(self, event):
         """Respond to key releases."""
-        if event.key == pygame.K_RIGHT:
+        if event.key == pygame.K_RIGHT:    
             self.shooter.moving_right = False
         elif event.key == pygame.K_LEFT:
             self.shooter.moving_left = False
@@ -107,7 +107,7 @@ class TargetPractice(pygame.sprite.Sprite):
         for bullet in self.bullets.copy():
             if bullet.rect.bottom <= 0:
                 self.bullets.remove(bullet)
-                print("bullet lost")
+                print("Bullet lost")
                 if self.settings.bullets_missed_limit > 0:
                     self.settings.bullets_missed_limit -= 1
                     print(f' Bullets left: {self.settings.bullets_missed_limit}')
@@ -118,11 +118,13 @@ class TargetPractice(pygame.sprite.Sprite):
         
     def _check_bullet_target_collisions(self):
         for bullet in self.bullets:
-            if self.target.rect.colliderect(bullet):
+            
+            if bullet.rect.colliderect(self.target):
                 print("Target Hit")
                 self.bullets.remove(bullet)
                 self.stats.score += 1
                 print(f"Score: {self.stats.score}")
+                self.settings.increase_speed()
 
             
     
